@@ -1,12 +1,5 @@
 fileFormatVersion: 2
-guid: 22035e28412789545867ee9e5d685203
-AssetOrigin:
-  serializedVersion: 1
-  productId: 15606
-  packageName: Sci-fi GUI skin
-  packageVersion: 1.2
-  assetPath: Assets/Sci-Fi UI/_SciFi_GUISkin_/Skin_Assets/bars/progress_bar_background1.png
-  uploadId: 217544
+guid: 3f3715a290b03274fbcd9ac8383836b9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -37,8 +30,8 @@ TextureImporter:
   generateCubemap: 6
   cubemapConvolution: 0
   seamlessCubemap: 0
-  textureFormat: -1
-  maxTextureSize: 1024
+  textureFormat: 1
+  maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
     filterMode: 1
@@ -70,13 +63,13 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
-  applyGammaDecoding: 1
+  applyGammaDecoding: 0
   swizzle: 50462976
-  cookieLightType: 1
+  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -88,7 +81,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -102,22 +95,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: progress_bar_background1_0
+      name: reset_0
       rect:
         serializedVersion: 2
-        x: 44
+        x: 0
         y: 0
-        width: 88
+        width: 1024
         height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
-      border: {x: 24, y: 24, z: 22, w: 23}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed8e32c1975ca8445a8af6203d135556
-      internalID: -1150913075
+      spriteID: f04cffdc7adf04643be7de7d1bdab76a
+      internalID: -1556462390
       vertices: []
       indices: 
       edges: []
@@ -125,7 +118,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 9a0b1e0300eceba4dbefe6da275add46
+    spriteID: 7c963c4df0be10c40a5794208cea7287
     internalID: 0
     vertices: []
     indices: 
@@ -133,7 +126,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      progress_bar_background1_0: -1150913075
+      reset_0: -1556462390
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
