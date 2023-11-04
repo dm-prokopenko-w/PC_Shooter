@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 181f63051fdd07742890cba704fc81e1, type: 3}
+  m_Name: AllConfig
+  m_EditorClassIdentifier: 
+  Id: AllConfig
+  CharacterPrefab: {fileID: 4902604819394089445, guid: 23cb385a59b0b114e9af10cf29ecb126,
+    type: 3}
+  Characters:
+  - {fileID: 11400000, guid: 9c3bf69580f8dd04fa31fcab91cbd2fc, type: 2}
+  - {fileID: 11400000, guid: 07956dd2d4a5f594f98c72ff604cbeec, type: 2}
+  - {fileID: 11400000, guid: 41d6da530100b4f49864a39c04556725, type: 2}
+  - {fileID: 11400000, guid: cbdb5253dc2fb9a44914b7b007c4d097, type: 2}
+  CountSpawners: 8
+  SpeedWalk: 2
+  SpeedRun: 5
+  JumpHeight: 3
+  MouseSensitivity: 30
+  GroundMask:
+    serializedVersion: 2
+    m_Bits: 64
