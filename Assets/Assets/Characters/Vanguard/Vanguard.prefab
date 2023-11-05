@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 1634802374337385336}
-  _mesh: {fileID: 298088212462061004}
+  _gunTrans: {fileID: 1249679343675672405}
 --- !u!1001 &640193358543026333
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -150,6 +150,12 @@ Animator:
 --- !u!4 &1110371550382006134 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4342b2260a5bcec4ea09ab999b7b4bd1,
+    type: 3}
+  m_PrefabInstance: {fileID: 640193358543026333}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1249679343675672405 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1852576806548013000, guid: 4342b2260a5bcec4ea09ab999b7b4bd1,
     type: 3}
   m_PrefabInstance: {fileID: 640193358543026333}
   m_PrefabAsset: {fileID: 0}

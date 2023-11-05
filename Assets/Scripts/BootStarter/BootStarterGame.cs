@@ -1,5 +1,6 @@
-﻿using AISystem;
+﻿using Core;
 using Game.Character;
+using Game.Gun;
 using VContainer;
 using VContainer.Unity;
 
@@ -10,9 +11,10 @@ namespace Game.BootStarters
         protected override void Configure(IContainerBuilder builder)
         {
             base.Configure(builder);
-            builder.Register<PlayerController>(Lifetime.Scoped).As<PlayerController, IStartable, ITickable>();
-            builder.Register<AIController>(Lifetime.Scoped).As<AIController, IStartable, ITickable>();
+            builder.Register<GameplayManager>(Lifetime.Scoped).As<GameplayManager, IStartable, ITickable>();
+            builder.Register<ItemController>(Lifetime.Scoped).As<ItemController, ITickable>();
             builder.Register<CharactersSpawner>(Lifetime.Scoped).As<CharactersSpawner, IStartable>();
+            builder.Register<GunSpawner>(Lifetime.Scoped);
         }
     }
 }

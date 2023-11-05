@@ -6,7 +6,7 @@ using VContainer;
 
 namespace Game.Character
 {
-    public class IconViewBtn : MonoBehaviour
+    public class IconCharacterViewBtn : MonoBehaviour
     {
         [Inject] private InjectController _uiController;
 

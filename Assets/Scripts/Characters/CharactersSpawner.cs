@@ -1,4 +1,3 @@
-using AISystem;
 using Core;
 using Game.Configs;
 using Game.Core;
@@ -14,8 +13,7 @@ namespace Game.Character
         [Inject] private ConfigsLoader _configsLoader;
         [Inject] private SaveManager _saveManager;
         [Inject] private InjectController _injectController;
-        [Inject] private PlayerController _playerController;
-        [Inject] private AIController _aiController;
+        [Inject] private ItemController _itemController;
 
         private List<Transform> _containers = new List<Transform>();
 
@@ -38,24 +36,23 @@ namespace Game.Character
                 int numContainer = Random.Range(0, countSpawners);
                 CharacterView obj = Object.Instantiate(data.CharacterPrefab, _containers[numContainer].position, _containers[numContainer].rotation);
                 obj.transform.SetParent(_containers[numContainer]);
+                var mesh = Object.Instantiate(ch.Mesh, _containers[numContainer].position, _containers[numContainer].rotation);
 
                 CharacterItem item;
                 if (!id.Equals(ch.Id))
                 {
-                    item = new Enemy(obj);
-                    //_aiController.Enemys.Add(item);
+                    item = new Enemy(obj, mesh, data.CharParm);
+                    _itemController.AddedEnemy((Enemy)item);
                     obj.name = ch.Id + " - Enemy";
                 }
                 else
                 {
-                    item = new Player(obj);
-                    _playerController.PlayerItem = (Player)item;
+                    item = new Player(obj, mesh, data.CharParm);
+                    _itemController.AddedPlayer((Player)item);
                     obj.name = ch.Id + " - Player";
                 }
 
-                var mesh = Object.Instantiate(ch.Mesh, _containers[numContainer].position, _containers[numContainer].rotation);
-                item.CharacterAnimator = mesh.CharacterAnim;
-                item.Init(ch.HP);  
+                item.InitHP(ch.HP);
                 mesh.transform.SetParent(item.ParentMesh);
                 _containers.Remove(_containers[numContainer]);
                 countSpawners--;

@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 
-namespace Game.Character
+namespace Game
 {
-    public class CharacterItemPool
+    public class ItemPool
     {
         public string Id;
         public GameObject Prefab;
 
-        public CharacterItemPool(string id, GameObject prefab)
+        public ItemPool(string id, GameObject prefab)
         {
             Id = id;
             Prefab = prefab;

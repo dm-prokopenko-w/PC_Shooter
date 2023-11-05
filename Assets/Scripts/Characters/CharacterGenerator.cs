@@ -19,10 +19,10 @@ namespace Game.Character
 
         public Action<CharacterSave> OnChangeCharacter;
 
-        private List<CharacterItemPool> _pools = new List<CharacterItemPool>();
+        private List<ItemPool> _pools = new List<ItemPool>();
         private int _countCharacter;
         private Transform _container;
-        private CharacterItemPool _currentItem;
+        private ItemPool _currentItem;
         private CharacterSave _saveItem;
         private AllConfig _data;
 
@@ -137,7 +137,7 @@ namespace Game.Character
             _currentItem.Prefab.transform.rotation = rot;
         }
 
-        private CharacterItemPool IsInitCharacter(string id)
+        private ItemPool IsInitCharacter(string id)
         {
             if (_pools == null) return null;
 
@@ -150,7 +150,7 @@ namespace Game.Character
                 CharacterMesh obj = Object.Instantiate(character.Mesh, _container);
                 obj.name = id;
                 obj.gameObject.SetActive(false);
-                var ch = new CharacterItemPool(id, obj.gameObject);
+                var ch = new ItemPool(id, obj.gameObject);
                 _currentItem = ch;
                 _pools.Add(ch);
                 return ch;

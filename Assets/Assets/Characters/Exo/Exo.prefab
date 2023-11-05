@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 3367291217414398130}
-  _mesh: {fileID: 5356103496478370501}
+  _gunTrans: {fileID: 6854609316410091612}
 --- !u!1001 &5086211122543925140
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -153,3 +153,9 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!4 &6854609316410091612 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1852576806548013000, guid: 95305dc17417a0f48a67902faf241541,
+    type: 3}
+  m_PrefabInstance: {fileID: 5086211122543925140}
+  m_PrefabAsset: {fileID: 0}

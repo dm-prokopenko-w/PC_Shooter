@@ -6,6 +6,7 @@ namespace Game.Character
 {
     public class CharacterView : MonoBehaviour
     {
+        [SerializeField] private Transform _hpTrans;
         [SerializeField] private Image _hp;
         [SerializeField] private CharacterController _characterController;
         [SerializeField] private Transform _camPos;
@@ -19,5 +20,10 @@ namespace Game.Character
         public Transform GetCameraTransform() => _camPos;
         public Transform GetGroundCheck() => _groundCheck;
         public Transform GetParentMesh() => _parentMesh;
+
+        private void Update()
+        {
+            _hpTrans.rotation = Quaternion.LookRotation(_hpTrans.position - Camera.main.transform.position);
+        }
     }
 }

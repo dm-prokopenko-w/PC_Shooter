@@ -25,6 +25,7 @@ namespace Core
     {
         public string Id;
         public Button Btn;
+        public Image Icon;
         public Transform Tr;
         public int Num;
         public string Des;
@@ -33,6 +34,12 @@ namespace Core
         {
             Id = id;
             Btn = btn;
+        }
+
+        public InjectItem(string id, Image icon)
+        {
+            Id = id;
+            Icon = icon;
         }
 
         public InjectItem(string id, Button btn, int num)
