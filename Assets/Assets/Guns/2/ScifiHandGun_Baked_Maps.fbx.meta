@@ -3,7 +3,12 @@ guid: df5fb0a565fde4a478fb753dc33ae52f
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gun_Sci-Fi_1_baked
+    second: {fileID: 2100000, guid: cbe4112750a742746815fc91158437a7, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

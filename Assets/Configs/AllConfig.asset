@@ -20,11 +20,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 07956dd2d4a5f594f98c72ff604cbeec, type: 2}
   - {fileID: 11400000, guid: 41d6da530100b4f49864a39c04556725, type: 2}
   - {fileID: 11400000, guid: cbdb5253dc2fb9a44914b7b007c4d097, type: 2}
+  Guns:
+  - {fileID: 11400000, guid: dd507f064eb578f45a4045d3355349bd, type: 2}
+  - {fileID: 11400000, guid: a89e47137f2647a4694d3b5cc7070713, type: 2}
+  - {fileID: 11400000, guid: b3097735ce0cb59409295c91f6d2bd80, type: 2}
   CountSpawners: 8
-  SpeedWalk: 2
-  SpeedRun: 5
-  JumpHeight: 3
-  MouseSensitivity: 30
-  GroundMask:
-    serializedVersion: 2
-    m_Bits: 64
+  CharParm:
+    SpeedWalk: 2
+    SpeedRun: 3
+    JumpHeight: 3
+    MouseSensitivity: 30
+    GroundMask:
+      serializedVersion: 2
+      m_Bits: 0
