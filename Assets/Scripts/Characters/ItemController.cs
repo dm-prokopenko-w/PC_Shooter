@@ -25,13 +25,13 @@ namespace Game
         public void AddedPlayer(Player player)
         {
             _playerItem = player;
-            _gunSpawner.Init(_playerItem.GunTrans);
+            _gunSpawner.InitPlayer(_playerItem.GunTrans);
         }
 
         public void AddedEnemy(Enemy enemy)
         {
             _enemyItems.Add(enemy);
-            _gunSpawner.Init(enemy.GunTrans);
+            _gunSpawner.InitEnemy(enemy.GunTrans);
         }
 
         public virtual void Tick()

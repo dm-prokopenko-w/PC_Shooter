@@ -2,6 +2,7 @@ using Core;
 using Game.Configs;
 using Game.Core;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using VContainer;
@@ -9,7 +10,7 @@ using VContainer.Unity;
 
 namespace Game.Gun
 {
-    public class GunSpawner
+    public class GunSpawner: IStartable
     {
         [Inject] private InjectController _injectController;
         [Inject] private ConfigsLoader _configsLoader;
@@ -23,14 +24,14 @@ namespace Game.Gun
         private Vector3 _gunPos = new Vector3(0, 0.2f,0);
         private Vector3 _gunRot = new Vector3(0, 180,-90);
 
-        public async void Init(Transform parent)
+        public async void Start()
         {
-            _playerGunTrans = parent;
-
-            var data = await _configsLoader.LoadConfig(Constants.Data) as AllConfig;
-            _gunConfigs = new List<GunConfig>(data.Guns);
-
             var preview = _injectController.GetUIItemById(Constants.GunViewInPauseTrans);
+
+            if (_gunConfigs == null)
+            {
+                await Init();
+            }
 
             foreach (var gun in _gunConfigs)
             {
@@ -41,10 +42,21 @@ namespace Game.Gun
                     gunBtn.Btn.onClick.AddListener(() => SpawnIconPreview(gunBtn.Des, preview.Icon));
                 }
             }
+        }
+
+        public async void InitPlayer(Transform parent)
+        {
+            _playerGunTrans = parent;
 
             var id = PlayerPrefs.GetString(Constants.PlayerGunId);
+
             if (string.IsNullOrEmpty(id))
             {
+                if (_gunConfigs == null)
+                {
+                    await Init();
+                }
+
                 _currentId = _gunConfigs[0].Id;
             }
             else
@@ -52,19 +64,25 @@ namespace Game.Gun
                 _currentId = id;
             }
 
-            SpawnGun(_currentId, parent);
+            SpawnPlayerGun();
         }
 
-        private void SpawnIconPreview(string id, Image preview)
+        public async void InitEnemy(Transform parent)
         {
-            var item = _gunConfigs.Find(x => x.Id.Equals(id));
-            if (item != null)
+            if(_gunConfigs == null)
             {
-                _currentId = item.Id;
-                preview.sprite = item.Icon;
+                await Init();
             }
+
+            var num = Random.Range(0, _gunConfigs.Count);
+            SpawnGun(_gunConfigs[num].Id, parent);
         }
 
+        private async Task Init()
+        {
+            var data = await _configsLoader.LoadConfig(Constants.Data) as AllConfig;
+            _gunConfigs = new List<GunConfig>(data.Guns);
+        }
 
         public void SpawnPlayerGun()
         {
@@ -83,7 +101,6 @@ namespace Game.Gun
             }
             else
             {
-                Debug.Log(2);
                 item.Prefab.SetActive(true);
                 _currentItem = item;
             }
@@ -93,7 +110,6 @@ namespace Game.Gun
         {
             var gun = _gunConfigs.Find(x => x.Id.Equals(id));
             if (gun == null) return null;
-            Debug.Log(1);
 
             GunMesh obj = Object.Instantiate(gun.Mesh);
             obj.name = id;
@@ -105,5 +121,16 @@ namespace Game.Gun
             obj.transform.Rotate(_gunRot);
             return obj;
         }
+
+        private void SpawnIconPreview(string id, Image preview)
+        {
+            var item = _gunConfigs.Find(x => x.Id.Equals(id));
+            if (item != null)
+            {
+                _currentId = item.Id;
+                preview.sprite = item.Icon;
+            }
+        }
+
     }
 }

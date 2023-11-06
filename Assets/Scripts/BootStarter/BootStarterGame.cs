@@ -14,7 +14,7 @@ namespace Game.BootStarters
             builder.Register<GameplayManager>(Lifetime.Scoped).As<GameplayManager, IStartable, ITickable>();
             builder.Register<ItemController>(Lifetime.Scoped).As<ItemController, ITickable>();
             builder.Register<CharactersSpawner>(Lifetime.Scoped).As<CharactersSpawner, IStartable>();
-            builder.Register<GunSpawner>(Lifetime.Scoped);
+            builder.Register<GunSpawner>(Lifetime.Scoped).As<GunSpawner, IStartable>(); ;
         }
     }
 }
