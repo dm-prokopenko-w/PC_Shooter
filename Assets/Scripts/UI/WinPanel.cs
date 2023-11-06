@@ -5,15 +5,15 @@ using VContainer;
 
 namespace Game
 {
-    public class Aim : MonoBehaviour
+    public class WinPanel : MonoBehaviour
     {
         [Inject] private InjectController _injectController;
 
-        [SerializeField] private RectTransform _trans;
+        [SerializeField] private Transform _trans;
 
         private void Awake()
         {
-            _injectController.AddUIItem(new InjectItem(Constants.AimTrans, _trans));
+            _injectController.AddUIItem(new InjectItem(Constants.WinPanelTrans, _trans));
         }
     }
 }

@@ -11,7 +11,7 @@ namespace AISystem
 {
     public class AIController : ItemController
     {
-        public override void Tick()
+        public void Tick()
         {
         }
     }

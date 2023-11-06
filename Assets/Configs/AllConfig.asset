@@ -27,9 +27,14 @@ MonoBehaviour:
   CountSpawners: 8
   CharParm:
     SpeedWalk: 2
-    SpeedRun: 3
+    SpeedRun: 4
     JumpHeight: 3
     MouseSensitivity: 30
+    BulletOnStart: 100
     GroundMask:
       serializedVersion: 2
-      m_Bits: 0
+      m_Bits: 64
+  BulParm:
+    MinSecRespawn: 3
+    MaxSecRespawn: 6
+    CountAddedBullet: 10

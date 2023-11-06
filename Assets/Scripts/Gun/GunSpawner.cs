@@ -10,7 +10,7 @@ using VContainer.Unity;
 
 namespace Game.Gun
 {
-    public class GunSpawner: IStartable
+    public class GunSpawner : IStartable
     {
         [Inject] private InjectController _injectController;
         [Inject] private ConfigsLoader _configsLoader;
@@ -21,8 +21,8 @@ namespace Game.Gun
         private string _currentId;
         private Transform _playerGunTrans;
 
-        private Vector3 _gunPos = new Vector3(0, 0.2f,0);
-        private Vector3 _gunRot = new Vector3(0, 180,-90);
+        private Vector3 _gunPos = new Vector3(0, 0.2f, 0);
+        private Vector3 _gunRot = new Vector3(0, 180, -90);
 
         public async void Start()
         {
@@ -44,7 +44,7 @@ namespace Game.Gun
             }
         }
 
-        public async void InitPlayer(Transform parent)
+        public async Task<(Transform, string)> InitPlayer(Transform parent)
         {
             _playerGunTrans = parent;
 
@@ -65,17 +65,26 @@ namespace Game.Gun
             }
 
             SpawnPlayerGun();
+            return (_currentItem.StartShootPoint, _currentId);
         }
 
-        public async void InitEnemy(Transform parent)
+        public async Task<(Transform, string)> InitEnemy(Transform parent)
         {
-            if(_gunConfigs == null)
+            if (_gunConfigs == null)
             {
                 await Init();
             }
 
             var num = Random.Range(0, _gunConfigs.Count);
-            SpawnGun(_gunConfigs[num].Id, parent);
+            var gun = SpawnGun(_gunConfigs[num].Id, parent);
+            return (gun.StartShootPoint, _gunConfigs[num].Id);
+        }
+
+        public int GetValueDamage(string gunId)
+        {
+            var gun = _gunConfigs.Find(x => x.Id.Equals(gunId));
+            if (gun == null) return 0;
+            return gun.Damage;
         }
 
         private async Task Init()
@@ -95,9 +104,9 @@ namespace Game.Gun
             if (item == null)
             {
                 var obj = SpawnGun(_currentId, _playerGunTrans);
-                var ch = new ItemPool(_currentId, obj.gameObject);
-                _currentItem = ch;
-                _pools.Add(ch);
+                var gun = new ItemPool(_currentId, obj.gameObject, obj.StartShootPoint);
+                _currentItem = gun;
+                _pools.Add(gun);
             }
             else
             {
@@ -106,7 +115,7 @@ namespace Game.Gun
             }
         }
 
-        public GunMesh SpawnGun(string id, Transform parent)
+        private GunMesh SpawnGun(string id, Transform parent)
         {
             var gun = _gunConfigs.Find(x => x.Id.Equals(id));
             if (gun == null) return null;
@@ -114,7 +123,6 @@ namespace Game.Gun
             GunMesh obj = Object.Instantiate(gun.Mesh);
             obj.name = id;
             obj.gameObject.SetActive(true);
-
             obj.transform.SetParent(parent);
             obj.transform.localPosition = _gunPos;
             obj.transform.rotation = parent.rotation;

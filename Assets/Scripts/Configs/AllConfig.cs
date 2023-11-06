@@ -16,6 +16,7 @@ namespace Game
         [Space]
         [Range(1, 8)] public int CountSpawners;
         public CharactersParm CharParm;
+        public BulletParm BulParm;
     }
 
     [Serializable] 
@@ -25,6 +26,15 @@ namespace Game
         [Range(1, 5)] public int SpeedRun;
         [Range(1, 5)] public int JumpHeight;
         [Range(1, 100)] public int MouseSensitivity;
+        [Range(1, 100)] public int BulletOnStart;
         public LayerMask GroundMask;
+    }
+
+    [Serializable] 
+    public class BulletParm
+    {
+        [Range(1, 50)] public int MinSecRespawn;
+        [Range(1, 50)] public int MaxSecRespawn;
+        [Range(1, 100)] public int CountAddedBullet;
     }
 }

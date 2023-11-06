@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace Core
@@ -19,6 +20,15 @@ namespace Core
             if (item == null) return null;
             return item;
         }
+
+        public void AddedActionOnClick(string id, UnityAction action)
+        {
+            var items = _uiItem.FindAll(x => x.Id.Equals(id));
+            foreach (var item in items)
+            {
+                item.Btn.onClick.AddListener(action);
+            }
+        }
     }
 
     public class InjectItem
@@ -27,6 +37,7 @@ namespace Core
         public Button Btn;
         public Image Icon;
         public Transform Tr;
+        public RectTransform RectTr;
         public int Num;
         public string Des;
 
@@ -60,6 +71,12 @@ namespace Core
         {
             Id = id;
             Tr = tr;
+        }
+
+        public InjectItem(string id, RectTransform rectTr)
+        {
+            Id = id;
+            RectTr = rectTr;
         }
     }
 }

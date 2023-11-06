@@ -14,6 +14,7 @@ namespace Game.BootStarters
             builder.Register<SaveManager>(Lifetime.Scoped);
             builder.Register<ConfigsLoader>(Lifetime.Scoped);
             builder.Register<SceneLoader>(Lifetime.Scoped);
+            builder.Register<ScoreSystem>(Lifetime.Scoped).As<ScoreSystem, IStartable>(); 
         }
     }
 }

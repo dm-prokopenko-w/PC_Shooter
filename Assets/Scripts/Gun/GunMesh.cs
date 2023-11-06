@@ -6,16 +6,8 @@ namespace Game.Gun
 {
     public class GunMesh : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
-        {
+        [SerializeField] private Transform _startShootPoint;
 
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
+        public Transform StartShootPoint => _startShootPoint;
     }
 }

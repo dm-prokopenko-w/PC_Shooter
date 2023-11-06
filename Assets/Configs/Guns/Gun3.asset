@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Gun3
   m_EditorClassIdentifier: 
   Id: Gun3
-  Damage: 5
+  Damage: 10
   Mesh: {fileID: 7531276630488989218, guid: 726cd21416e138640a4f2575ffe04009, type: 3}
   Icon: {fileID: 21300000, guid: d359b680032a50847b1c295e81b31825, type: 3}

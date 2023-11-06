@@ -7,7 +7,6 @@ using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 using Object = UnityEngine.Object;
-using Random = UnityEngine.Random;
 
 namespace Game.Character
 {
@@ -43,30 +42,6 @@ namespace Game.Character
             string id = item == null ? _data.Characters[0].Id : item.Id;
 
             SpawnCharacter(id, _container.position, _container.rotation);
-        }
-
-        public void SpawnRandomCharacter()
-        {
-            if (_countCharacter <= 0)
-            {
-                Debug.LogError("Add character variations!");
-                return;
-            }
-
-            List<string> _ids = new List<string>();
-            foreach (var item in _data.Characters)
-            {
-                _ids.Add(item.Id);
-            }
-
-            if (_currentItem != null)
-            {
-                Despawn();
-                _ids.Remove(_currentItem.Id);
-            }
-
-            int numCharacter = Random.Range(0, _ids.Count);
-            SpawnCharacter(_ids[numCharacter], _container.position, _container.rotation);
         }
 
         public void Despawn()
@@ -132,6 +107,7 @@ namespace Game.Character
 
             _saveManager.Save(Constants.CharacterKey, _saveItem);
             _currentItem.Prefab.SetActive(true);
+            _currentItem.Anim.SetTrigger("Dance");
 
             _currentItem.Prefab.transform.position = pos;
             _currentItem.Prefab.transform.rotation = rot;
@@ -150,7 +126,7 @@ namespace Game.Character
                 CharacterMesh obj = Object.Instantiate(character.Mesh, _container);
                 obj.name = id;
                 obj.gameObject.SetActive(false);
-                var ch = new ItemPool(id, obj.gameObject);
+                var ch = new ItemPool(id, obj.gameObject, obj.CharacterAnim);
                 _currentItem = ch;
                 _pools.Add(ch);
                 return ch;

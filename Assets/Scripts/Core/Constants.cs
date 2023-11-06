@@ -3,6 +3,7 @@
     public static class Constants
     {
         public const string CharacterKey = "CharacterKey";
+        public const string ScoreKey = "ScoreKey";
 
         public const string ConfigsPath = "Configs/";
 
@@ -16,8 +17,11 @@
         public const string SelectedGun = "SelectedGun";
         public const string SceneLoaderBtn = "SceneLoaderBtn";
 
+        public const string BulletContainerTrans = "BulletContainerTrans";
         public const string GunViewInPauseTrans = "GunViewInPauseTrans";
         public const string PauseMenuPanelTrans = "PauseMenuPanelTrans";
+        public const string WinPanelTrans = "WinPanelTrans";
+        public const string LosePanelTrans = "LosePanelTrans";
         public const string AimTrans = "AimTrans";
         public const string CharacterViewTrans = "CharacterViewTrans";
         public const string CharacterSpawnerTrans = "CharacterSpawnerTrans";

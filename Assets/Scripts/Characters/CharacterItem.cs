@@ -1,4 +1,5 @@
 using Game.Core;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,6 +16,10 @@ namespace Game.Character
         public Transform ViewTrans => _view.transform;
         public Image HPImage => _view.GetHPImage();
         public TextMeshProUGUI HPText => _view.GetHPText();
+
+        public Transform StartShoot {  get; set; }
+        public string GunID {  get; set; }
+        public float CurrentHP => _currentHP;
 
         protected Animator _anim;
         protected CharacterView _view;
@@ -66,6 +71,8 @@ namespace Game.Character
 
     public class Player : CharacterItem
     {
+        public int CountBullet => _countBullet;
+        private int _countBullet;
 
         private float _speed;
         private bool _isGround;
@@ -81,8 +88,10 @@ namespace Game.Character
             Camera.main.transform.SetParent(CamTrans);
             Camera.main.transform.position = CamTrans.position;
             Camera.main.transform.rotation = CamTrans.rotation;
+            _countBullet = parm.BulletOnStart;
         }
 
+        public void UpdateCountBullet(int count) => _countBullet += count;
 
         public override void Update()
         {
@@ -116,10 +125,8 @@ namespace Game.Character
 
             if (Input.GetKeyDown(KeyCode.Space) && _isGround)
             {
-                Debug.Log(1);
                 _direction.y = Mathf.Sqrt(_jumpHeight * Constants.Gravity);
                 _anim.SetTrigger("Jump");
-
             }
 
             Vector3 move = ViewTrans.right * hor + ViewTrans.forward * ver;
@@ -138,7 +145,6 @@ namespace Game.Character
             _rotationY = Mathf.Clamp(_rotationY, _minimumY, _maximumY);
 
             CamTrans.localEulerAngles = new Vector3(-_rotationY, CamTrans.localEulerAngles.y, 0);
-
         }
     }
 
@@ -161,7 +167,7 @@ namespace Game.Character
 
             if (_currentTime > _timeAwait)
             {
-                _timeAwait = Random.Range(_minTimeAwait, _maxTimeAwait);
+                _timeAwait = UnityEngine.Random.Range(_minTimeAwait, _maxTimeAwait);
                 _currentTime = 0;
             }
         }

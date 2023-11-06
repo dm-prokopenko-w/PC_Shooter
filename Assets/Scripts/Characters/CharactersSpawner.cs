@@ -39,19 +39,22 @@ namespace Game.Character
                 var mesh = Object.Instantiate(ch.Mesh, _containers[numContainer].position, _containers[numContainer].rotation);
 
                 CharacterItem item;
+                Transform startPoint;
                 if (!id.Equals(ch.Id))
                 {
                     item = new Enemy(obj, mesh, data.CharParm);
-                    _itemController.AddedEnemy((Enemy)item);
+                    startPoint = await _itemController.AddedEnemy((Enemy)item);
                     obj.name = ch.Id + " - Enemy";
+                    obj.tag = "Enemy";
                 }
                 else
                 {
                     item = new Player(obj, mesh, data.CharParm);
-                    _itemController.AddedPlayer((Player)item);
+                    startPoint = await _itemController.AddedPlayer((Player)item);
                     obj.name = ch.Id + " - Player";
+                    obj.tag = "Player";
                 }
-
+                item.StartShoot = startPoint;
                 item.InitHP(ch.HP);
                 mesh.transform.SetParent(item.ParentMesh);
                 _containers.Remove(_containers[numContainer]);

@@ -9,9 +9,11 @@ namespace Game
     {
         [Inject] private InjectController _injectController;
 
+        [SerializeField] private Transform _trans;
+
         private void Awake()
         {
-            _injectController.AddUIItem(new InjectItem(Constants.PauseMenuPanelTrans, transform));
+            _injectController.AddUIItem(new InjectItem(Constants.PauseMenuPanelTrans, _trans));
         }
     }
 }
