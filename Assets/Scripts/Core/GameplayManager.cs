@@ -69,6 +69,7 @@ namespace Core
                 _gameplayMenu.PauseMenuTrans.gameObject.SetActive(false);
             }
 
+            Cursor.lockState = CursorLockMode.Locked;
             _injectController.AddedActionOnClick(Constants.SceneLoaderBtn, _sceneLoader.LoadMenuScene);
         }
 

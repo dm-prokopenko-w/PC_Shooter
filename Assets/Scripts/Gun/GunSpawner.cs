@@ -3,6 +3,7 @@ using Game.Configs;
 using Game.Core;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 using VContainer;
@@ -83,8 +84,13 @@ namespace Game.Gun
         public int GetValueDamage(string gunId)
         {
             var gun = _gunConfigs.Find(x => x.Id.Equals(gunId));
-            if (gun == null) return 0;
-            return gun.Damage;
+            return gun == null ? 0 : gun.Damage;
+        }
+
+        public Vector3 GetStartGunPoint(string gunId)
+        {
+            var p = _pools.Find(x => x.Id.Equals(gunId));
+            return p != null ? p.StartShootPoint.position : new Vector3(0, -1000, 0);
         }
 
         private async Task Init()

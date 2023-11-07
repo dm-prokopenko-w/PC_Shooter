@@ -1,5 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 namespace Game.Character
@@ -13,6 +14,7 @@ namespace Game.Character
         [SerializeField] private Transform _parentMesh;
         [SerializeField] private Transform _groundCheck;
         [SerializeField] private TextMeshProUGUI _hpText;
+        [SerializeField] private NavMeshAgent _agent;
 
         public Image GetHPImage() => _hp;
         public TextMeshProUGUI GetHPText() => _hpText;
@@ -20,6 +22,7 @@ namespace Game.Character
         public Transform GetCameraTransform() => _camPos;
         public Transform GetGroundCheck() => _groundCheck;
         public Transform GetParentMesh() => _parentMesh;
+        public NavMeshAgent GetNavMeshAgent() => _agent;
 
         private void Update()
         {

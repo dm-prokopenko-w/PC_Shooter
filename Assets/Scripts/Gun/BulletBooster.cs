@@ -7,7 +7,7 @@ namespace Game.Gun
 {
     public class BulletBooster : MonoBehaviour
     {
-        [Inject] private ItemController _itemContr;
+        [Inject] private CharactersController _chController;
         [Inject] private ConfigsLoader _configsLoader;
 
         [SerializeField] private GameObject _view;
@@ -39,7 +39,7 @@ namespace Game.Gun
             if (other.tag.Equals("Player"))
             {
                 _isUpdateView = true;
-                _itemContr.AddedBullet(_countAdded);
+                _chController.AddedBullet(_countAdded);
                 _view.SetActive(false);
             }
         }

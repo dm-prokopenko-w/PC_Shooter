@@ -6,7 +6,7 @@ namespace Game.Gun
 {
     public class BulletCounter : MonoBehaviour
     {
-        [Inject] private ItemController _itemController;
+        [Inject] private CharactersController _itemController;
 
         [SerializeField] private TextMeshProUGUI _counter;
 

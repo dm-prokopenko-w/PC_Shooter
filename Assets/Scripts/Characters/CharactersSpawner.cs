@@ -13,7 +13,7 @@ namespace Game.Character
         [Inject] private ConfigsLoader _configsLoader;
         [Inject] private SaveManager _saveManager;
         [Inject] private InjectController _injectController;
-        [Inject] private ItemController _itemController;
+        [Inject] private CharactersController _chController;
 
         private List<Transform> _containers = new List<Transform>();
 
@@ -42,20 +42,19 @@ namespace Game.Character
                 Transform startPoint;
                 if (!id.Equals(ch.Id))
                 {
-                    item = new Enemy(obj, mesh, data.CharParm);
-                    startPoint = await _itemController.AddedEnemy((Enemy)item);
+                    item = new Enemy(obj, mesh, data.CharactersParm);
+                    startPoint = await _chController.AddedEnemy((Enemy)item, data.EnemyParm, ch.HP);
                     obj.name = ch.Id + " - Enemy";
                     obj.tag = "Enemy";
                 }
                 else
                 {
-                    item = new Player(obj, mesh, data.CharParm);
-                    startPoint = await _itemController.AddedPlayer((Player)item);
+                    item = new Player(obj, mesh, data.CharactersParm);
+                    startPoint = await _chController.AddedPlayer((Player)item, data.PlayerParm, ch.HP);
                     obj.name = ch.Id + " - Player";
                     obj.tag = "Player";
                 }
                 item.StartShoot = startPoint;
-                item.InitHP(ch.HP);
                 mesh.transform.SetParent(item.ParentMesh);
                 _containers.Remove(_containers[numContainer]);
                 countSpawners--;

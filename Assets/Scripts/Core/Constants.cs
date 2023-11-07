@@ -25,6 +25,7 @@
         public const string AimTrans = "AimTrans";
         public const string CharacterViewTrans = "CharacterViewTrans";
         public const string CharacterSpawnerTrans = "CharacterSpawnerTrans";
+        public const string EffectInactiveTrans = "EffectInactiveTrans";
 
         public const float Gravity = 9.8f;
         public const float GroundDistance = 0.4f;

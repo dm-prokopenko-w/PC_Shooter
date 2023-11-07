@@ -494,6 +494,7 @@ GameObject:
   - component: {fileID: 4902604819394089445}
   - component: {fileID: 8608026177502353931}
   - component: {fileID: 8620911874160612292}
+  - component: {fileID: 6501331853348721894}
   m_Layer: 0
   m_Name: CharacterView
   m_TagString: Untagged
@@ -539,7 +540,7 @@ MonoBehaviour:
   _parentMesh: {fileID: 1387836625451430865}
   _groundCheck: {fileID: 6496966574777505656}
   _hpText: {fileID: 4082453155847017441}
-  _col: {fileID: 0}
+  _agent: {fileID: 6501331853348721894}
 --- !u!143 &8608026177502353931
 CharacterController:
   m_ObjectHideFlags: 0
@@ -591,8 +592,30 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 16
   m_CollisionDetection: 0
+--- !u!195 &6501331853348721894
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7677159878050688450}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &8484766802076686006
 GameObject:
   m_ObjectHideFlags: 0

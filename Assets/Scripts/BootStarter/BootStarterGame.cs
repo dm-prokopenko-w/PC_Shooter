@@ -12,9 +12,10 @@ namespace Game.BootStarters
         {
             base.Configure(builder);
             builder.Register<GameplayManager>(Lifetime.Scoped).As<GameplayManager, IStartable, ITickable>();
-            builder.Register<ItemController>(Lifetime.Scoped).As<ItemController, IStartable, ITickable>();
+            builder.Register<CharactersController>(Lifetime.Scoped).As<CharactersController, IStartable, ITickable>();
             builder.Register<CharactersSpawner>(Lifetime.Scoped).As<CharactersSpawner, IStartable>();
             builder.Register<GunSpawner>(Lifetime.Scoped).As<GunSpawner, IStartable>(); ;
+            builder.Register<ControllerVFX>(Lifetime.Scoped).As<ControllerVFX, IStartable>(); ;
         }
     }
 }
