@@ -1,8 +1,7 @@
-using Game.Core;
 using VContainer;
 using VContainer.Unity;
 
-namespace Core
+namespace Game.Core
 {
     public class ScoreSystem : IStartable
     {

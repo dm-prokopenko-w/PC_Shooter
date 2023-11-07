@@ -1,5 +1,4 @@
-﻿using Core;
-using Game.Core;
+﻿using Game.Core;
 using UnityEngine;
 using UnityEngine.UI;
 using VContainer;

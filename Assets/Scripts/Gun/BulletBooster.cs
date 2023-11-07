@@ -1,3 +1,4 @@
+using Game.Character;
 using Game.Configs;
 using Game.Core;
 using UnityEngine;

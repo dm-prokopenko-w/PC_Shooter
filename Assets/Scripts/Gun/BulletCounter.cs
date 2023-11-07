@@ -1,3 +1,4 @@
+using Game.Character;
 using TMPro;
 using UnityEngine;
 using VContainer;

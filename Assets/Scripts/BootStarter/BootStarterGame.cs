@@ -1,6 +1,7 @@
-﻿using Core;
-using Game.Character;
+﻿using Game.Character;
+using Game.Core;
 using Game.Gun;
+using Game.VFX;
 using VContainer;
 using VContainer.Unity;
 

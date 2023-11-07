@@ -1,5 +1,4 @@
-﻿using Core;
-using Game.Configs;
+﻿using Game.Configs;
 using Game.Core;
 using System;
 using System.Collections.Generic;

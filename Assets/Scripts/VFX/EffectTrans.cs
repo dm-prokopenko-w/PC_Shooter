@@ -1,9 +1,8 @@
-using Core;
 using Game.Core;
 using UnityEngine;
 using VContainer;
 
-namespace Game
+namespace Game.VFX
 {
     public class EffectTrans : MonoBehaviour
     {

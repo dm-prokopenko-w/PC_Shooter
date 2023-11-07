@@ -10,11 +10,6 @@ namespace Game.Core
             SceneManager.LoadScene("Menu");
         }
 
-        public void LoadGameScene()
-        {
-            SceneManager.LoadScene("Game");
-        }
-
         public void LoadScene(int sceneIndex)
         {
             if (SceneManager.sceneCountInBuildSettings > sceneIndex)

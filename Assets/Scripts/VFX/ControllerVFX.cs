@@ -1,13 +1,11 @@
-using Core;
 using Game.Configs;
 using Game.Core;
 using System.Collections.Generic;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
-using static UnityEditor.PlayerSettings;
 
-namespace Game
+namespace Game.VFX
 {
     public class ControllerVFX : IStartable
     {

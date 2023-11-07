@@ -1,11 +1,10 @@
 using Game.Character;
-using Game.Configs;
 using Game.Gun;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Game
+namespace Game.Configs
 {
     [CreateAssetMenu(fileName = "AllConfig", menuName = "Data/AllConfigData", order = 0)]
     public class AllConfig : Config

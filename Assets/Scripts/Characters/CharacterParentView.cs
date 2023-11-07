@@ -1,6 +1,5 @@
 using VContainer;
 using UnityEngine;
-using Core;  
 using Game.Core;
 
 namespace Game.Character

@@ -10,10 +10,14 @@
         public const string Data = "Data";
         public const string PlayerGunId = "Data";
 
+        public const string PlayerTag = "Player";
+        public const string EnemyTag = "Enemy";
+
         public const string ClearCharacterViewBtn = "ClearCharacterViewBtn";
         public const string GenerateBtn = "GenerateBtn";
         public const string ResumeGameBtn = "ResumeGameBtn";
         public const string ExitBtn = "ExitBtn";
+        public const string QuitBtn = "QuitBtn";
         public const string SelectedGun = "SelectedGun";
         public const string SceneLoaderBtn = "SceneLoaderBtn";
 

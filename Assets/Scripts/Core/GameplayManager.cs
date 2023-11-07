@@ -1,10 +1,9 @@
-using Game.Core;
 using Game.Gun;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 
-namespace Core
+namespace Game.Core
 {
     public class GameplayManager : IStartable, ITickable
     {

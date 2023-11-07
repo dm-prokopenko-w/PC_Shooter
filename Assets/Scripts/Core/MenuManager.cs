@@ -1,7 +1,6 @@
-﻿using Core;
-using Game.Character;
-using UnityEngine.UI;
+﻿using Game.Character;
 using UnityEngine;
+using UnityEngine.UI;
 using VContainer;
 using VContainer.Unity;
 
@@ -17,13 +16,24 @@ namespace Game.Core
 
         public void Start()
         {
-            var item = _injectController.GetUIItemById(Constants.SceneLoaderBtn);
-            if (item != null)
+            var play = _injectController.GetUIItemById(Constants.SceneLoaderBtn);
+            if (play != null)
             {
-                _buttonPlay = item.Btn;
-                item.Btn.onClick.AddListener(() => LoadScene(item.Num));
+                _buttonPlay = play.Btn;
+                play.Btn.onClick.AddListener(() => LoadScene(play.Num));
                 _characterGenerator.OnChangeCharacter += ChangeCharacter;
             }
+
+            var quit = _injectController.GetUIItemById(Constants.QuitBtn);
+            if (quit != null)
+            {
+                quit.Btn.onClick.AddListener(QuitGame);
+            }
+        }
+
+        private void QuitGame()
+        {
+             Application.Quit();
         }
 
         private void ChangeCharacter(CharacterSave character)

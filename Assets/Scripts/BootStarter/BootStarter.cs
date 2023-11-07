@@ -2,7 +2,6 @@
 using VContainer;
 using Game.Configs;
 using Game.Core;
-using Core;
 
 namespace Game.BootStarters
 {

@@ -1,4 +1,3 @@
-using Core;
 using Game.Configs;
 using Game.Core;
 using System.Collections.Generic;
@@ -15,17 +14,17 @@ namespace Game.Character
         [Inject] private InjectController _injectController;
         [Inject] private CharactersController _chController;
 
-        private List<Transform> _containers = new List<Transform>();
-
         public async void Start()
         {
             var data = await _configsLoader.LoadConfig(Constants.Data) as AllConfig;
             var countSpawners = data.CountSpawners;
 
+            List<Transform> containers = new List<Transform>();
+
             for (int i = 1; i <= countSpawners; i++)
             {
                 var container = _injectController.GetUIItemById(Constants.CharacterSpawnerTrans + i);
-                _containers.Add(container.Tr);
+                containers.Add(container.Tr);
             }
 
             var save = _saveManager.Load<CharacterSave>(Constants.CharacterKey);
@@ -34,29 +33,34 @@ namespace Game.Character
             foreach (var ch in data.Characters)
             {
                 int numContainer = Random.Range(0, countSpawners);
-                CharacterView obj = Object.Instantiate(data.CharacterPrefab, _containers[numContainer].position, _containers[numContainer].rotation);
-                obj.transform.SetParent(_containers[numContainer]);
-                var mesh = Object.Instantiate(ch.Mesh, _containers[numContainer].position, _containers[numContainer].rotation);
+
+                CharacterView obj = Object.Instantiate(data.CharacterPrefab, containers[numContainer].position, containers[numContainer].rotation);
+                obj.transform.SetParent(containers[numContainer]);
+                var mesh = Object.Instantiate(ch.Mesh, containers[numContainer].position, containers[numContainer].rotation);
 
                 CharacterItem item;
                 Transform startPoint;
+
                 if (!id.Equals(ch.Id))
                 {
                     item = new Enemy(obj, mesh, data.CharactersParm);
                     startPoint = await _chController.AddedEnemy((Enemy)item, data.EnemyParm, ch.HP);
-                    obj.name = ch.Id + " - Enemy";
-                    obj.tag = "Enemy";
+                    obj.name = ch.Id + " - " + Constants.EnemyTag;
+                    obj.tag = Constants.EnemyTag;
                 }
                 else
                 {
                     item = new Player(obj, mesh, data.CharactersParm);
                     startPoint = await _chController.AddedPlayer((Player)item, data.PlayerParm, ch.HP);
-                    obj.name = ch.Id + " - Player";
-                    obj.tag = "Player";
+                    obj.name = ch.Id + " - " + Constants.PlayerTag;
+                    obj.tag = Constants.PlayerTag;
                 }
+
                 item.StartShoot = startPoint;
+
                 mesh.transform.SetParent(item.ParentMesh);
-                _containers.Remove(_containers[numContainer]);
+
+                containers.Remove(containers[numContainer]);
                 countSpawners--;
             }
         }

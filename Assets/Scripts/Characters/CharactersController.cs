@@ -1,17 +1,15 @@
 using VContainer.Unity;
 using UnityEngine;
-using Game.Character;
 using System.Collections.Generic;
 using VContainer;
-using Core;
 using Game.Gun;
 using System.Threading.Tasks;
 using Game.Core;
 using System;
 using Game.Configs;
-using static UnityEditor.PlayerSettings;
+using Game.VFX;
 
-namespace Game
+namespace Game.Character
 {
     public class CharactersController : IStartable, ITickable
     {
@@ -118,7 +116,6 @@ namespace Game
                 {
                     foreach (Enemy enemy in EnemyItems)
                     {
-                        continue;
                         if (enemy.IsShoot)
                         {
                             int dam = _gunSpawner.GetValueDamage(enemy.GunID);
